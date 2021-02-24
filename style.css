@@ -1,0 +1,90 @@
+/*Clearing the default margin and padding of the website*/
+*{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    touch-action: manipulation;
+}
+
+/* sets the game 'play area' to a pre-set dimension */
+#game {
+    width: 400px;
+    height: 500px;
+    border: 16px solid black;
+    margin: auto; /*centers the game div*/
+    overflow: hidden; /*hides content who 'overflows' from an element's (the game div) box*/
+    position: relative;
+    /* padding: 0 20px 0 20px; */
+}
+
+/* sets the styling of the 'pipes' */
+#pipes {
+    width: 50px;
+    height: 500px;
+    background-color: black;
+    /* to make the pipes start to appear from the right, we need to make it's 'position' attribute to relative, and also displace the position in left, by 400px (the width of the game div) */
+    position: relative;
+    left: 400px; /* think of this code by putting a box on the left of the div, with 400px width*/
+
+    /* link the pipes animation (below) as an animation property, with 2s, and will repeat infinitely */
+    /* 'linear' is a type of animation - the speed remains constant throughout the animation */
+    /* https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp */
+    animation: pipes 2s infinite linear;
+}
+
+/* this is a keyframe animation called pipes */
+/* makes keyframes of animation, with the changes */
+@keyframes pipes {
+    0% {left: 400px;} /*during start, position of #pipes is left:400px*/
+    100% {left: -50px;} /*at the end, position of #pipes is left: -50px, because the width of the pipes is 50px, so the position has to be 50px less than 0, in order for the pipe to 'disappear'*/
+}
+
+@keyframes fadeAnimation {
+    0% {opacity: 100%;}
+    50% {opacity: 100%;}
+    75% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+/* sets the styling of 'hole' */
+#hole {
+    width: 50px;
+    height: 150px;
+    background-color: white;
+    /*same reason as #pipes on why position: relative, and left: 400px*/
+    position: relative;
+    left: 400px;
+    /* based on the html structurem, #hole is defaultly placed below the pipes (which has height: 500 == #game height). so we need to 'bring up' the #hole into the #game */
+    top: -500px;
+    animation: pipes 2s infinite linear; /*same animation as #pipes so it can overlap*/
+}
+
+#character {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    /* border-radius: 50%; */
+    left: 20px;
+}
+
+#text {
+    position: absolute;
+    font-size: 36px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 0;
+    width: 80%;
+    animation: fadeAnimation 2s linear infinite;
+}
+
+button {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    margin: auto;
+}
