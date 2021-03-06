@@ -19,7 +19,6 @@ function easeInQuad (t, b, c, d) {
 }
 
 function easeOutCubic (t, b, c, d) {
-    //console.log("function ran");
     return c * ((t = t / d - 1) * t * t + 1) + b;
 }
 
